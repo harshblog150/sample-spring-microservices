@@ -15,6 +15,7 @@ node {
 		
 	stage('Build') {
 	    sh 'cd account-service'
+	    sh 'pwd'	
 	    sh 'ls -lthr *'
             sh 'sudo mvn clean install'
 
