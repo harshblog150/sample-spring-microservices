@@ -1,14 +1,17 @@
 node {
-	  withMaven(maven:'maven') {
-		
-		stage('Checkout code') {
+     
+     echo "Running ${env.JAVA_HOME} on ${env.JENKINS_URL}"	
+	
+     withMaven(maven:'maven') {
+	
+	 stage('Checkout code') {
 		  sh 'date'
 		  sh 'pwd'
       		  checkout scm
 		  sh 'git log -n 1'		
 	    }
 		
-		stage('Build') {
+	stage('Build') {
             sh 'mvn clean install'
 
             def pom = readMavenPom file:'pom.xml'
@@ -17,14 +20,14 @@ node {
         }
 
         stage('Image') {
-            dir ('account-service') {
-                def app = docker.build "localhost:5000/account-service:${env.version}"
-                app.push()
+           dir ('account-service') {
+           def app = docker.build "localhost:5000/account-service:${env.version}"
+           app.push()
             }
         }
 
         stage ('Run') {
-            docker.image("localhost:5000/account-service:${env.version}").run('-p 2222:2222 -h account --name account --link discovery')
+           docker.image("localhost:5000/account-service:${env.version}").run('-p 2222:2222 -h account --name account --link discovery')
         }	
          
     }
