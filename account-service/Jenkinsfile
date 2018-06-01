@@ -14,6 +14,8 @@ node {
 	    }
 		
 	stage('Build') {
+	    sh 'cd account-service'
+	    sh 'ls -lthr *'
             sh 'sudo mvn clean install'
 
             def pom = readMavenPom file:'pom.xml'
