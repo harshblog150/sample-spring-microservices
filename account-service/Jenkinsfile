@@ -1,9 +1,11 @@
 node {
      
-     echo "Running ${env.JAVA_HOME} on ${env.JENKINS_URL}"	
-	
      withMaven(maven:'maven') {
 	
+	 stage('Checking Env var') {
+		  sh 'echo "$JAVA_HOME"
+		  sh 'pwd'
+      	     }  
 	 stage('Checkout code') {
 		  sh 'date'
 		  sh 'pwd'
