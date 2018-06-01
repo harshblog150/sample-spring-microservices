@@ -3,7 +3,7 @@ node {
      withMaven(maven:'maven') {
 	
 	 stage('Checking Env var') {
-		  sh 'echo "$JAVA_HOME"
+		  sh 'echo "$JAVA_HOME"'
 		  sh 'pwd'
       	     }  
 	 stage('Checkout code') {
