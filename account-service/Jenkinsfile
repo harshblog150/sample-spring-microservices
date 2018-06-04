@@ -18,9 +18,8 @@ node {
 	    //sh 'echo "Hello!!!!!!"'	
 	    sh 'cd account-service'
 	    //sh 'pwd'
+	    sh 'sudo mvn package'	
 	    sh 'ls -lthr *'
-            sh 'sudo mvn package'
-
             def pom = readMavenPom file:'pom.xml'
             print pom.version
             env.version = pom.version
