@@ -15,10 +15,10 @@ node {
 		
 	stage('Build') {
 	    sh 'pwd'
-	    sh 'cd account-service'
+	    sh 'cd account-service/'
 	    sh 'pwd'
 	    sh 'ls -lthr *'
-            sh 'sudo mvn clean package'
+            sh 'sudo mvn package'
 
             def pom = readMavenPom file:'pom.xml'
             print pom.version
