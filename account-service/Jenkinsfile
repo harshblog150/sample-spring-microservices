@@ -16,7 +16,7 @@ node {
 	stage('Build') {
 	    sh 'pwd'
 	    //sh 'echo "Hello!!!!!!"'	
-	    sh 'cd account-service\; sudo mvn package' 
+	    sh 'cd account-service; sudo mvn package' 
             //sh 'sudo mvn package'
 	    //sh 'pwd'	    
 	    //sh 'ls -lthr *'
