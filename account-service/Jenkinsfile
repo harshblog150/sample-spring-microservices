@@ -15,6 +15,7 @@ node {
 		
 	stage('Build') {
 	    sh 'pwd'
+	    sh 'echo "Hello!!!!!!"'	
 	    sh 'cd account-service/'
 	    sh 'pwd'
 	    sh 'ls -lthr *'
